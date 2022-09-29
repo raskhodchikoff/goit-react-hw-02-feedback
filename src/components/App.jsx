@@ -42,7 +42,7 @@ export class App extends Component {
         pt={6}
         bg="mainBgr"
       >
-        <Box as="section">
+        <Box as="section" display="flex" flexDirection="column" mx="auto">
           <Section title="Please leave feedback">
             <FeedbackOptions
               options={Object.keys(this.state)}
@@ -50,7 +50,13 @@ export class App extends Component {
             />
           </Section>
         </Box>
-        <Box as="section">
+        <Box
+          as="section"
+          display="flex"
+          flexDirection="column"
+          mx="auto"
+          width="100%"
+        >
           <Section title="Statistics">
             <Statistics
               good={good}
