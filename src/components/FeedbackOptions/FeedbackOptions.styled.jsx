@@ -23,8 +23,10 @@ export const FeedbackOptionsBtn = styled.button`
   background-color: ${p => p.theme.colors.btnBgr};
   transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
 
-  &:hover,
-  &:focus {
+  &:hover {
     background-color: ${p => p.theme.colors.btnHover};
+  }
+  &:active:focus {
+    background-color: ${p => p.theme.colors.btnBgr};
   }
 `;
