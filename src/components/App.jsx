@@ -3,6 +3,7 @@ import { Component } from 'react';
 import { Statistics } from 'components/Statistics/Statistics';
 import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 import { Section } from 'components/Section/Section';
+import { Notification } from 'components/Notification/Notification';
 
 import { Box } from './Box';
 
@@ -30,6 +31,7 @@ export class App extends Component {
 
   render() {
     const { good, neutral, bad } = this.state;
+    const total = this.countTotalFeedback();
 
     return (
       <Box
@@ -57,15 +59,19 @@ export class App extends Component {
           mx="auto"
           width="100%"
         >
-          <Section title="Statistics">
-            <Statistics
-              good={good}
-              neutral={neutral}
-              bad={bad}
-              total={this.countTotalFeedback()}
-              positivePercentage={this.countPositiveFeedbackPercentage()}
-            />
-          </Section>
+          {total > 0 ? (
+            <Section title="Statistics">
+              <Statistics
+                good={good}
+                neutral={neutral}
+                bad={bad}
+                total={this.countTotalFeedback()}
+                positivePercentage={this.countPositiveFeedbackPercentage()}
+              />
+            </Section>
+          ) : (
+            <Notification message="There is no feedback" />
+          )}
         </Box>
       </Box>
     );
